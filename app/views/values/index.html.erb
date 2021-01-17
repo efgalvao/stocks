@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Values</h1>
+<h1>Values for <%= Facade.find(params[:facade_id]).name %></h1>
 
 <table>
   <thead>
@@ -18,9 +18,9 @@
         <td><%= value.date %></td>
         <td><%= value.value %></td>
         <td><%= value.facade_id %></td>
-        <td><%= link_to 'Show', value %></td>
-        <td><%= link_to 'Edit', edit_value_path(value) %></td>
-        <td><%= link_to 'Destroy', value, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', facade_value_path(id: value.id) %></td>
+        <td><%= link_to 'Edit', @value %></td>
+        <td><%= link_to 'Destroy', @value, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Value', new_value_path %>
+<%= link_to 'New Value', new_facade_value_path %>
