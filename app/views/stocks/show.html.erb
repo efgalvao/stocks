@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Aquisition date:</strong>
+  <%= @stock.aquisition_date %>
+</p>
+
+<p>
+  <strong>Aquisition value:</strong>
+  <%= @stock.aquisition_value %>
+</p>
+
+<p>
+  <strong>Facade:</strong>
+  <%= @stock.facade_id %>
+</p>
+
+<%= link_to 'Edit', edit_stock_path(@stock) %> |
+<%= link_to 'Back', stocks_path %>

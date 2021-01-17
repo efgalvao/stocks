@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  aquisition_date: 2021-01-16
+  aquisition_value: 1.5
+  facade: one
+
+two:
+  aquisition_date: 2021-01-16
+  aquisition_value: 1.5
+  facade: two

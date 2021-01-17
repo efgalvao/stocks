@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @dividend.date %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @dividend.value %>
+</p>
+
+<p>
+  <strong>Facade:</strong>
+  <%= @dividend.facade_id %>
+</p>
+
+<%= link_to 'Edit', edit_dividend_path(@dividend) %> |
+<%= link_to 'Back', dividends_path %>
