@@ -1,25 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Passivos</h1>
+<div class="title">
+  <h1>Passivos</h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="facades">
     <% @facades.each do |facade| %>
-      <tr>
-        <td><%= facade.name %></td>
-        <td><%= link_to 'Detalhes', facade_values_path(facade) %></td>
-      </tr>
+        <%= link_to facade.name, facade_values_path(facade), class:"facade" %>
     <% end %>
-  </tbody>
-</table>
+</div>
 
-<br>
-
-<%= link_to 'Cadastrar novo Passivo', new_facade_path %>
+<%= link_to 'Cadastrar novo Passivo', new_facade_path, class:"new" %>
