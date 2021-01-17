@@ -1,20 +1,4 @@
 #                                Prefix Verb   URI Pattern                                                                              Controller#Action
-#                                stocks GET    /stocks(.:format)                                                                        stocks#index
-#                                       POST   /stocks(.:format)                                                                        stocks#create
-#                             new_stock GET    /stocks/new(.:format)                                                                    stocks#new
-#                            edit_stock GET    /stocks/:id/edit(.:format)                                                               stocks#edit
-#                                 stock GET    /stocks/:id(.:format)                                                                    stocks#show
-#                                       PATCH  /stocks/:id(.:format)                                                                    stocks#update
-#                                       PUT    /stocks/:id(.:format)                                                                    stocks#update
-#                                       DELETE /stocks/:id(.:format)                                                                    stocks#destroy
-#                             dividends GET    /dividends(.:format)                                                                     dividends#index
-#                                       POST   /dividends(.:format)                                                                     dividends#create
-#                          new_dividend GET    /dividends/new(.:format)                                                                 dividends#new
-#                         edit_dividend GET    /dividends/:id/edit(.:format)                                                            dividends#edit
-#                              dividend GET    /dividends/:id(.:format)                                                                 dividends#show
-#                                       PATCH  /dividends/:id(.:format)                                                                 dividends#update
-#                                       PUT    /dividends/:id(.:format)                                                                 dividends#update
-#                                       DELETE /dividends/:id(.:format)                                                                 dividends#destroy
 #                              accounts GET    /accounts(.:format)                                                                      accounts#index
 #                                       POST   /accounts(.:format)                                                                      accounts#create
 #                           new_account GET    /accounts/new(.:format)                                                                  accounts#new
@@ -23,14 +7,30 @@
 #                                       PATCH  /accounts/:id(.:format)                                                                  accounts#update
 #                                       PUT    /accounts/:id(.:format)                                                                  accounts#update
 #                                       DELETE /accounts/:id(.:format)                                                                  accounts#destroy
-#                                values GET    /values(.:format)                                                                        values#index
-#                                       POST   /values(.:format)                                                                        values#create
-#                             new_value GET    /values/new(.:format)                                                                    values#new
-#                            edit_value GET    /values/:id/edit(.:format)                                                               values#edit
-#                                 value GET    /values/:id(.:format)                                                                    values#show
-#                                       PATCH  /values/:id(.:format)                                                                    values#update
-#                                       PUT    /values/:id(.:format)                                                                    values#update
-#                                       DELETE /values/:id(.:format)                                                                    values#destroy
+#                         facade_stocks GET    /facades/:facade_id/stocks(.:format)                                                     stocks#index
+#                                       POST   /facades/:facade_id/stocks(.:format)                                                     stocks#create
+#                      new_facade_stock GET    /facades/:facade_id/stocks/new(.:format)                                                 stocks#new
+#                     edit_facade_stock GET    /facades/:facade_id/stocks/:id/edit(.:format)                                            stocks#edit
+#                          facade_stock GET    /facades/:facade_id/stocks/:id(.:format)                                                 stocks#show
+#                                       PATCH  /facades/:facade_id/stocks/:id(.:format)                                                 stocks#update
+#                                       PUT    /facades/:facade_id/stocks/:id(.:format)                                                 stocks#update
+#                                       DELETE /facades/:facade_id/stocks/:id(.:format)                                                 stocks#destroy
+#                      facade_dividends GET    /facades/:facade_id/dividends(.:format)                                                  dividends#index
+#                                       POST   /facades/:facade_id/dividends(.:format)                                                  dividends#create
+#                   new_facade_dividend GET    /facades/:facade_id/dividends/new(.:format)                                              dividends#new
+#                  edit_facade_dividend GET    /facades/:facade_id/dividends/:id/edit(.:format)                                         dividends#edit
+#                       facade_dividend GET    /facades/:facade_id/dividends/:id(.:format)                                              dividends#show
+#                                       PATCH  /facades/:facade_id/dividends/:id(.:format)                                              dividends#update
+#                                       PUT    /facades/:facade_id/dividends/:id(.:format)                                              dividends#update
+#                                       DELETE /facades/:facade_id/dividends/:id(.:format)                                              dividends#destroy
+#                         facade_values GET    /facades/:facade_id/values(.:format)                                                     values#index
+#                                       POST   /facades/:facade_id/values(.:format)                                                     values#create
+#                      new_facade_value GET    /facades/:facade_id/values/new(.:format)                                                 values#new
+#                     edit_facade_value GET    /facades/:facade_id/values/:id/edit(.:format)                                            values#edit
+#                          facade_value GET    /facades/:facade_id/values/:id(.:format)                                                 values#show
+#                                       PATCH  /facades/:facade_id/values/:id(.:format)                                                 values#update
+#                                       PUT    /facades/:facade_id/values/:id(.:format)                                                 values#update
+#                                       DELETE /facades/:facade_id/values/:id(.:format)                                                 values#destroy
 #                               facades GET    /facades(.:format)                                                                       facades#index
 #                                       POST   /facades(.:format)                                                                       facades#create
 #                            new_facade GET    /facades/new(.:format)                                                                   facades#new
@@ -61,10 +61,13 @@
 #                  rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
-  resources :stocks
-  resources :dividends
+  root 'facades#main'
+
   resources :accounts
-  resources :values
-  resources :facades
+  resources :facades do
+    resources :stocks
+    resources :dividends
+    resources :values
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

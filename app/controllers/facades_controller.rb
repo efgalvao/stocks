@@ -1,5 +1,5 @@
 class FacadesController < ApplicationController
-  before_action :set_facade, only: [:show, :edit, :update, :destroy]
+  before_action :set_facade, only: %i[show edit update destroy]
 
   # GET /facades
   # GET /facades.json
@@ -9,8 +9,7 @@ class FacadesController < ApplicationController
 
   # GET /facades/1
   # GET /facades/1.json
-  def show
-  end
+  def show; end
 
   # GET /facades/new
   def new
@@ -18,8 +17,7 @@ class FacadesController < ApplicationController
   end
 
   # GET /facades/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /facades
   # POST /facades.json
@@ -62,13 +60,16 @@ class FacadesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_facade
-      @facade = Facade.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def facade_params
-      params.require(:facade).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_facade
+    @facade = Facade.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def facade_params
+    params.require(:facade).permit(:name)
+  end
+
+  def main; end
 end
