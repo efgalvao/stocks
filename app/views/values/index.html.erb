@@ -18,9 +18,9 @@
         <td><%= value.date %></td>
         <td><%= value.value %></td>
         <td><%= value.facade_id %></td>
-        <td><%= link_to 'Show', facade_value_path(id: value.id) %></td>
-        <td><%= link_to 'Edit', @value %></td>
-        <td><%= link_to 'Destroy', @value, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Detalhes', facade_value_path(id: value.id) %></td>
+        <td><%= link_to 'Edit', edit_facade_value_path(id: value.id) %></td>
+        <td><%= link_to 'Destroy', facade_value_path(id: value.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,6 +1,6 @@
 <h1>Editing Value</h1>
 
-<%= render 'form', value: @value %>
+<%= render 'update', value: @value %>
 
-<%= link_to 'Show', @value %> |
-<%= link_to 'Back', values_path %>
+<%= link_to 'Edit', edit_facade_value_path(id: @value.id) %> |
+<%= link_to 'Back', facade_values_path %>

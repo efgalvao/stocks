@@ -28,7 +28,7 @@ class ValuesController < ApplicationController
 
     respond_to do |format|
       if @value.save
-        format.html { redirect_to facade_values_path(@facade), notice: 'Value was successfully created.' }
+        format.html { redirect_to facade_values_path(@value.facade_id), notice: 'Value was successfully created.' }
         format.json { render :show, status: :created, location: @value }
       else
         format.html { render :new }
@@ -42,7 +42,9 @@ class ValuesController < ApplicationController
   def update
     respond_to do |format|
       if @value.update(value_params)
-        format.html { redirect_to @value, notice: 'Value was successfully updated.' }
+        format.html do
+          redirect_to facade_values_path(params[:facade_id]), notice: 'Value was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @value }
       else
         format.html { render :edit }
@@ -56,7 +58,9 @@ class ValuesController < ApplicationController
   def destroy
     @value.destroy
     respond_to do |format|
-      format.html { redirect_to values_url, notice: 'Value was successfully destroyed.' }
+      format.html do
+        redirect_to facade_values_path(params[:facade_id]), notice: 'Value was successfully destroyed.'
+      end
       format.json { head :no_content }
     end
   end

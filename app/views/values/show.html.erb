@@ -12,8 +12,8 @@
 
 <p>
   <strong>Facade:</strong>
-  <%= @value.facade_id %>
+  <%= @value.facade.name %>
 </p>
 
-<%= link_to 'Edit', edit_value_path(@value) %> |
-<%= link_to 'Back', values_path %>
+<%= link_to 'Edit', edit_facade_value_path(id: @value.id) %> |
+<%= link_to 'Back', facade_values_path %>
