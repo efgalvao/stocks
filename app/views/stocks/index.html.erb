@@ -17,10 +17,10 @@
       <tr>
         <td><%= stock.aquisition_date %></td>
         <td><%= stock.aquisition_value %></td>
-        <td><%= stock.facade_id %></td>
-        <td><%= link_to 'Ver', stock %></td>
-        <td><%= link_to 'Alterar', edit_stock_path(stock) %></td>
-        <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= stock.facade.name %></td>
+        <td><%= link_to 'Ver', facade_stock_path(id: stock.id) %></td>
+        <td><%= link_to 'Alterar', edit_facade_stock_path(id: stock.id) %></td>
+        <td><%= link_to 'Destroy', facade_stock_path(id: stock.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Stock', new_stock_path %>
+<%= link_to 'New Stock', new_facade_stock_path %>
