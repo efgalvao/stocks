@@ -4,7 +4,7 @@ class ValuesController < ApplicationController
   # GET /values
   # GET /values.json
   def index
-    @values = Value.where(facade_id: params[:facade_id])
+    @values = Value.where(facade_id: params[:facade_id]).includes(:facade)
   end
 
   # GET /values/1
@@ -19,7 +19,8 @@ class ValuesController < ApplicationController
   end
 
   # GET /values/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /values
   # POST /values.json
