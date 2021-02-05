@@ -21,8 +21,8 @@
     <%= form.text_field :value %>
   </div>
 
+  <%= hidden_field_tag 'value[facade_id]', params[:facade_id] %>
 
-  <%= form.collection_select(:facade_id, Facade.all, :id, :name) %>
 
   <div class="actions">
     <%= form.submit %>
