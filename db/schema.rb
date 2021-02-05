@@ -10,14 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_16_234938) do
+ActiveRecord::Schema.define(version: 2021_02_04_141009) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
-    t.float "balance"
-    t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "balances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.float "balance"
+    t.date "date"
+    t.bigint "account_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_balances_on_account_id"
   end
 
   create_table "dividends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -53,6 +60,7 @@ ActiveRecord::Schema.define(version: 2021_01_16_234938) do
     t.index ["facade_id"], name: "index_values_on_facade_id"
   end
 
+  add_foreign_key "balances", "accounts"
   add_foreign_key "dividends", "facades"
   add_foreign_key "stocks", "facades"
   add_foreign_key "values", "facades"

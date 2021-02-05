@@ -63,7 +63,9 @@
 Rails.application.routes.draw do
   root 'facades#main'
 
-  resources :accounts
+  resources :accounts  do
+      resources :balances
+  end
   resources :facades do
     resources :stocks
     resources :dividends
