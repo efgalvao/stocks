@@ -22,7 +22,7 @@ class FacadesController < ApplicationController
   # POST /facades
   # POST /facades.json
   def create
-    @facade = Facade.new(facade_params)
+    @facade = Facade.new(name: facade_params[:name].upcase)
 
     respond_to do |format|
       if @facade.save
@@ -39,7 +39,7 @@ class FacadesController < ApplicationController
   # PATCH/PUT /facades/1.json
   def update
     respond_to do |format|
-      if @facade.update(facade_params)
+      if @facade.update(name: facade_params[:name].upcase)
         format.html { redirect_to @facade, notice: 'Facade was successfully updated.' }
         format.json { render :show, status: :ok, location: @facade }
       else
