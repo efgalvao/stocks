@@ -5,15 +5,5 @@
   <%= @account.name %>
 </p>
 
-<p>
-  <strong>Balance:</strong>
-  <%= @account.balance %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @account.date %>
-</p>
-
-<%= link_to 'Edit', edit_account_path(@account) %> |
-<%= link_to 'Back', accounts_path %>
+<%= link_to 'Alterar', edit_account_path(@account) %> |
+<%= link_to 'Voltar', accounts_path %>
