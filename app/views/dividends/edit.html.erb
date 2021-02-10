@@ -2,5 +2,5 @@
 
 <%= render 'form', dividend: @dividend %>
 
-<%= link_to 'Ver', @dividend %> |
-<%= link_to 'Voltar', dividends_path %>
+<%= link_to 'Ver', facade_dividend_path(id: @dividend.id) %> |
+<%= link_to 'Voltar', facade_dividends_path %>

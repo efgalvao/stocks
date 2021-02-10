@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h1><strong><%= @facade.name %></strong></h1>
+
+</p>
+
+<%= line_chart @facade.values.monthly_value %>
+
+<%= line_chart @facade.stocks.monthly_average_price %>
+
+<h3> Dividends</h3>
+<%= line_chart @facade.dividends.monthly_dividend %>
+
+<h3><strong>Value and Average price</strong></h3>
+<%= line_chart [
+{name: "Value", data: @facade.values.monthly_value},
+{name: "Average Price", data: @facade.stocks.monthly_average_price},
+] %>
+

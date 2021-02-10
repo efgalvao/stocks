@@ -5,4 +5,8 @@ class Facade < ApplicationRecord
   accepts_nested_attributes_for :stocks, allow_destroy: true
   has_many :values, dependent: :destroy
   accepts_nested_attributes_for :values, allow_destroy: true
+
+  def multiline
+    
+  end
 end

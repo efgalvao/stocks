@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<div class="title">
+  <h1>Gráficos</h1>
+</div>
+
+<div class="facades">
+    <% @facades.each do |facade| %>
+        <%= link_to facade.name, chart_path(facade), class:"facade" %>
+    <% end %>
+</div>
+
+<%= line_chart Facade.pluck(:id).uniq.map{|i| {
+		name: Facade.find(i).name,
+		data: Facade.find(i).values.monthly_value
+		} } %>
+<%# <%= link_to 'Cadastrar novo Passivo', new_facade_path, class:"new" %> %>
