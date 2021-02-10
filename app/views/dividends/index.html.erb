@@ -18,9 +18,9 @@
         <td><%= dividend.date %></td>
         <td><%= dividend.value %></td>
         <td><%= dividend.facade_id %></td>
-        <td><%= link_to 'Ver', dividend %></td>
-        <td><%= link_to 'Alterar', edit_dividend_path(dividend) %></td>
-        <td><%= link_to 'Destroy', dividend, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', facade_dividend_path(id: dividend.id) %></td>
+        <td><%= link_to 'Alterar', edit_facade_dividend_path(id: dividend.id) %></td>
+        <td><%= link_to 'Destroy', facade_dividend_path(id: dividend.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Dividend', new_dividend_path %>
+<%= link_to 'New Dividend', new_facade_dividend_path %>
