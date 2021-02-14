@@ -1,18 +1,35 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <h1><strong><%= @facade.name %></strong></h1>
+  <h1><strong>Details about <%= @facade.name %>:</strong></h1>
+
+<h3>total amount of shares bought:</h3>
+<%= @facade.stocks.size %>
+
+<h3>Total amount invested:</h3>
+<%= number_to_currency(@facade.stocks.sum(:aquisition_value), unit: 'R$', separator: ',', delimiter: '') %>
+
+<h3> Average paid price:</h3>
+<%= number_to_currency(@facade.stocks.average_price, unit: 'R$', separator: ',', delimiter: '') %>
+
+<h3>Current value per share:</h3>
+<%= number_to_currency(@facade.values.last.value, unit: 'R$', separator: ',', delimiter: '') %>
+
+<h3>Current total value:</h3>
+<%= number_to_currency(@facade.values.sum(:value), unit: 'R$', separator: ',', delimiter: '') %>
+
+<h3>Total dividends received:</h3>
+<%= number_to_currency(@facade.dividends.sum(:value), unit: 'R$', separator: ',', delimiter: '') %>
 
 </p>
-
+<h3> Value in the last 12 months:</h3>
 <%= line_chart @facade.values.monthly_value %>
 
-<%= line_chart @facade.stocks.monthly_average_price %>
 
-<h3> Dividends</h3>
+<h3> Dividends:</h3>
 <%= line_chart @facade.dividends.monthly_dividend %>
 
-<h3><strong>Value and Average price</strong></h3>
+<h3><strong>Value and Average price:</strong></h3>
 <%= line_chart [
 {name: "Value", data: @facade.values.monthly_value},
 {name: "Average Price", data: @facade.stocks.monthly_average_price},
