@@ -1,31 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Stocks</h1>
+<div class="title">
+  <h1>Stocks</h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Aquisition date</th>
-      <th>Aquisition value</th>
-      <th>Facade</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="stocks">
     <% @stocks.each do |stock| %>
-      <tr>
-        <td><%= stock.aquisition_date %></td>
-        <td><%= stock.aquisition_value %></td>
-        <td><%= stock.facade.name %></td>
-        <td><%= link_to 'Ver', facade_stock_path(id: stock.id) %></td>
-        <td><%= link_to 'Alterar', edit_facade_stock_path(id: stock.id) %></td>
-        <td><%= link_to 'Destroy', facade_stock_path(id: stock.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <%= link_to stock.name, stock_path(stock), class:"stock" %>
     <% end %>
-  </tbody>
-</table>
+</div>
 
-<br>
-
-<%= link_to 'New Stock', new_facade_stock_path %>
+<%= link_to 'Register new Stock', new_stock_path, class:"new" %>

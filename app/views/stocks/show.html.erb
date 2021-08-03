@@ -1,19 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Aquisition date:</strong>
-  <%= @stock.aquisition_date %>
-</p>
+<h1>
+    <%= @stock.name %> Details
+</h1>
 
-<p>
-  <strong>Aquisition value:</strong>
-  <%= @stock.aquisition_value %>
-</p>
+<% if !@stock.quotes.blank? %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        </th> Quotes </th>
+        <th> Aquisition Date </th>
+        <th> Aquisition Value </th>
+        <th> Actions </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for quote in @stock.quotes %>
+      <tr>
+        <td> <%= quote.name %> </td>
+        <td> <%= quote.aquisition_date %> </td>
+        <td> <%= quote.aquisition_value %> </td>
+        <td> <%= link_to "Edit", edit_quote_path(id: quote.id), :class => "btn btn-primary"  %>
+             <%= link_to 'Delete', quote_path(id: quote.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+<h2> No quotes for this Stock <h2>
+<% end %>
 
-<p>
-  <strong>Facade:</strong>
-  <%= @stock.facade_id %>
-</p>
+<%= link_to 'Edit Stock', edit_stock_path(@stock) %> 
 
-<%= link_to 'Alterar', edit_stock_path(@stock) %> |
-<%= link_to 'Voltar', stocks_path %>
+<%= link_to 'Delete', @stock, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"  %>
+
+<%= link_to 'Back', stocks_path %>
