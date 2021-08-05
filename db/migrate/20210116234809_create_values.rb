@@ -1,6 +1,6 @@
-class CreateDividends < ActiveRecord::Migration[6.0]
+class CreateValues < ActiveRecord::Migration[6.0]
   def change
-    create_table :dividends do |t|
+    create_table :values do |t|
       t.date :date
       t.float :value
       t.belongs_to :stock, null: false, foreign_key: true

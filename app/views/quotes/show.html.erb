@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Aquisition date:</strong>
+  <%= @quote.aquisition_date %>
+</p>
+
+<p>
+  <strong>Aquisition value:</strong>
+  <%= @quote.aquisition_value %>
+</p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= @quote.stock_id %>
+</p>
+
+<%= link_to 'Alterar', edit_quote_path(@quote) %> |
+<%= link_to 'Voltar', quotes_path %>

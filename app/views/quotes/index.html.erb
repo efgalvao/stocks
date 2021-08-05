@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Quotes</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Aquisition date</th>
+      <th>Aquisition value</th>
+      <th>Stock</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @quotes.each do |quote| %>
+      <tr>
+        <td><%= quote.aquisition_date %></td>
+        <td><%= quote.aquisition_value %></td>
+        <td><%= quote.stock.name %></td>
+        <td><%= link_to 'Edit', edit_quote_path(id: quote.id) %></td>
+        <td><%= link_to 'Remove', quote_path(id: quote.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Quote', new_quote_path,  :class => "btn btn-success" %>

@@ -1,48 +1,48 @@
 require 'test_helper'
 
-class StocksControllerTest < ActionDispatch::IntegrationTest
+class QuotesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @stock = stocks(:one)
+    @quote = quotes(:one)
   end
 
   test "should get index" do
-    get stocks_url
+    get quotes_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_stock_url
+    get new_quote_url
     assert_response :success
   end
 
-  test "should create stock" do
-    assert_difference('Stock.count') do
-      post stocks_url, params: { stock: { aquisition_date: @stock.aquisition_date, aquisition_value: @stock.aquisition_value, facade_id: @stock.facade_id } }
+  test "should create quote" do
+    assert_difference('Quote.count') do
+      post quotes_url, params: { quote: { aquisition_date: @quote.aquisition_date, aquisition_value: @quote.aquisition_value, stock_id: @quote.stock_id } }
     end
 
-    assert_redirected_to stock_url(Stock.last)
+    assert_redirected_to quote_url(Quote.last)
   end
 
-  test "should show stock" do
-    get stock_url(@stock)
+  test "should show quote" do
+    get quote_url(@quote)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_stock_url(@stock)
+    get edit_quote_url(@quote)
     assert_response :success
   end
 
-  test "should update stock" do
-    patch stock_url(@stock), params: { stock: { aquisition_date: @stock.aquisition_date, aquisition_value: @stock.aquisition_value, facade_id: @stock.facade_id } }
-    assert_redirected_to stock_url(@stock)
+  test "should update quote" do
+    patch quote_url(@quote), params: { quote: { aquisition_date: @quote.aquisition_date, aquisition_value: @quote.aquisition_value, stock_id: @quote.stock_id } }
+    assert_redirected_to quote_url(@quote)
   end
 
-  test "should destroy stock" do
-    assert_difference('Stock.count', -1) do
-      delete stock_url(@stock)
+  test "should destroy quote" do
+    assert_difference('Quote.count', -1) do
+      delete quote_url(@quote)
     end
 
-    assert_redirected_to stocks_url
+    assert_redirected_to quotes_url
   end
 end

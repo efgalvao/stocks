@@ -30,38 +30,41 @@ ActiveRecord::Schema.define(version: 2021_02_04_141009) do
   create_table "dividends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.date "date"
     t.float "value"
-    t.bigint "facade_id", null: false
+    t.bigint "stock_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["facade_id"], name: "index_dividends_on_facade_id"
+    t.index ["stock_id"], name: "index_dividends_on_stock_id"
   end
 
-  create_table "facades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
+  create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.date "aquisition_date"
+    t.float "aquisition_value"
+    t.bigint "stock_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["stock_id"], name: "index_quotes_on_stock_id"
   end
 
   create_table "stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.date "aquisition_date"
-    t.float "aquisition_value"
-    t.bigint "facade_id", null: false
+    t.string "name"
+    t.bigint "account_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["facade_id"], name: "index_stocks_on_facade_id"
+    t.index ["account_id"], name: "index_stocks_on_account_id"
   end
 
   create_table "values", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.date "date"
     t.float "value"
-    t.bigint "facade_id", null: false
+    t.bigint "stock_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["facade_id"], name: "index_values_on_facade_id"
+    t.index ["stock_id"], name: "index_values_on_stock_id"
   end
 
   add_foreign_key "balances", "accounts"
-  add_foreign_key "dividends", "facades"
-  add_foreign_key "stocks", "facades"
-  add_foreign_key "values", "facades"
+  add_foreign_key "dividends", "stocks"
+  add_foreign_key "quotes", "stocks"
+  add_foreign_key "stocks", "accounts"
+  add_foreign_key "values", "stocks"
 end
