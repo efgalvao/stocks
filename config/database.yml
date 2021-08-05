@@ -19,7 +19,7 @@ default: &default
 
 development:
   <<: *default
-  database: stocks_development
+  database: stocks_dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -47,8 +47,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: stocks_production
-  username: stocks
-  password: <%= ENV['STOCKS_DATABASE_PASSWORD'] %>
+# production:
+#   <<: *default
+#   database: qstocks_prod
+#   username: <%= ENV['STOCKS_USERNAME']%>
+#   password: <%= ENV['STOCKS_PASSWORD'] %>
