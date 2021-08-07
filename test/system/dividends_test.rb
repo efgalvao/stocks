@@ -15,7 +15,7 @@ class DividendsTest < ApplicationSystemTestCase
     click_on "New Dividend"
 
     fill_in "Date", with: @dividend.date
-    fill_in "Facade", with: @dividend.facade_id
+    fill_in "Stock", with: @dividend.stock_id
     fill_in "Value", with: @dividend.value
     click_on "Create Dividend"
 
@@ -28,7 +28,7 @@ class DividendsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Date", with: @dividend.date
-    fill_in "Facade", with: @dividend.facade_id
+    fill_in "Stock", with: @dividend.stock_id
     fill_in "Value", with: @dividend.value
     click_on "Update Dividend"
 

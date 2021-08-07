@@ -1,43 +1,43 @@
 require "application_system_test_case"
 
-class FacadesTest < ApplicationSystemTestCase
+class StocksTest < ApplicationSystemTestCase
   setup do
-    @facade = facades(:one)
+    @stock = stocks(:one)
   end
 
   test "visiting the index" do
-    visit facades_url
-    assert_selector "h1", text: "Facades"
+    visit stocks_url
+    assert_selector "h1", text: "Stocks"
   end
 
-  test "creating a Facade" do
-    visit facades_url
-    click_on "New Facade"
+  test "creating a Stock" do
+    visit stocks_url
+    click_on "New Stock"
 
-    fill_in "Name", with: @facade.name
-    click_on "Create Facade"
+    fill_in "Name", with: @stock.name
+    click_on "Create Stock"
 
-    assert_text "Facade was successfully created"
+    assert_text "Stock was successfully created"
     click_on "Back"
   end
 
-  test "updating a Facade" do
-    visit facades_url
+  test "updating a Stock" do
+    visit stocks_url
     click_on "Edit", match: :first
 
-    fill_in "Name", with: @facade.name
-    click_on "Update Facade"
+    fill_in "Name", with: @stock.name
+    click_on "Update Stock"
 
-    assert_text "Facade was successfully updated"
+    assert_text "Stock was successfully updated"
     click_on "Back"
   end
 
-  test "destroying a Facade" do
-    visit facades_url
+  test "destroying a Stock" do
+    visit stocks_url
     page.accept_confirm do
       click_on "Destroy", match: :first
     end
 
-    assert_text "Facade was successfully destroyed"
+    assert_text "Stock was successfully destroyed"
   end
 end

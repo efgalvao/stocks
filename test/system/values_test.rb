@@ -15,7 +15,7 @@ class ValuesTest < ApplicationSystemTestCase
     click_on "New Value"
 
     fill_in "Date", with: @value.date
-    fill_in "Facade", with: @value.facade_id
+    fill_in "Stock", with: @value.stock_id
     fill_in "Value", with: @value.value
     click_on "Create Value"
 
@@ -28,7 +28,7 @@ class ValuesTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Date", with: @value.date
-    fill_in "Facade", with: @value.facade_id
+    fill_in "Stock", with: @value.stock_id
     fill_in "Value", with: @value.value
     click_on "Update Value"
 

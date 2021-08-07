@@ -3,9 +3,9 @@
 one:
   aquisition_date: 2021-01-16
   aquisition_value: 1.5
-  facade: one
+  stock: one
 
 two:
   aquisition_date: 2021-01-16
   aquisition_value: 1.5
-  facade: two
+  stock: two

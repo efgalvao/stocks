@@ -17,7 +17,7 @@ class ValuesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create value" do
     assert_difference('Value.count') do
-      post values_url, params: { value: { date: @value.date, facade_id: @value.facade_id, value: @value.value } }
+      post values_url, params: { value: { date: @value.date, stock_id: @value.stock_id, value: @value.value } }
     end
 
     assert_redirected_to value_url(Value.last)
@@ -34,7 +34,7 @@ class ValuesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update value" do
-    patch value_url(@value), params: { value: { date: @value.date, facade_id: @value.facade_id, value: @value.value } }
+    patch value_url(@value), params: { value: { date: @value.date, stock_id: @value.stock_id, value: @value.value } }
     assert_redirected_to value_url(@value)
   end
 

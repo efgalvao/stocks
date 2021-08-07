@@ -17,7 +17,7 @@ class DividendsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create dividend" do
     assert_difference('Dividend.count') do
-      post dividends_url, params: { dividend: { date: @dividend.date, facade_id: @dividend.facade_id, value: @dividend.value } }
+      post dividends_url, params: { dividend: { date: @dividend.date, stock_id: @dividend.stock_id, value: @dividend.value } }
     end
 
     assert_redirected_to dividend_url(Dividend.last)
@@ -34,7 +34,7 @@ class DividendsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update dividend" do
-    patch dividend_url(@dividend), params: { dividend: { date: @dividend.date, facade_id: @dividend.facade_id, value: @dividend.value } }
+    patch dividend_url(@dividend), params: { dividend: { date: @dividend.date, stock_id: @dividend.stock_id, value: @dividend.value } }
     assert_redirected_to dividend_url(@dividend)
   end
 
