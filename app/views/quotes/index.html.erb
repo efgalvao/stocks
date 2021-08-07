@@ -2,8 +2,12 @@
 
 <h1>Quotes</h1>
 
+<% @stocks.each do |stock| %>
+
 <table class="table table-hover">
+  <label class="table table-title"> Quotes for <%= stock.name %>: </label>
   <thead>
+
     <tr>
       <th>Aquisition date</th>
       <th>Aquisition value</th>
@@ -13,18 +17,18 @@
   </thead>
 
   <tbody>
-    <% @quotes.each do |quote| %>
+    <% stock.quotes.each do |quote| %>
       <tr>
         <td><%= quote.aquisition_date %></td>
         <td><%= quote.aquisition_value %></td>
         <td><%= quote.stock.name %></td>
-        <td><%= link_to 'Edit', edit_quote_path(id: quote.id) %></td>
-        <td><%= link_to 'Remove', quote_path(id: quote.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_quote_path(id: quote.id), :class => "btn btn-warning" %>
+        <%= link_to 'Remove', quote_path(id: quote.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<% end %>
 <br>
 
 <%= link_to 'New Quote', new_quote_path,  :class => "btn btn-success" %>
