@@ -8,7 +8,6 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        </th> Quotes </th>
         <th> Aquisition Date </th>
         <th> Aquisition Value </th>
         <th> Actions </th>
@@ -17,10 +16,9 @@
     <tbody>
       <% for quote in @stock.quotes %>
       <tr>
-        <td> <%= quote.name %> </td>
         <td> <%= quote.aquisition_date %> </td>
         <td> <%= quote.aquisition_value %> </td>
-        <td> <%= link_to "Edit", edit_quote_path(id: quote.id), :class => "btn btn-primary"  %>
+        <td> <%= link_to "Edit", edit_quote_path(id: quote.id), :class => "btn btn-warning"  %>
              <%= link_to 'Delete', quote_path(id: quote.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
       <% end %>
     </tbody>
@@ -29,8 +27,11 @@
 <h2> No quotes for this Stock <h2>
 <% end %>
 
-<%= link_to 'Edit Stock', edit_stock_path(@stock) %> 
+<div class="buttons">
+  <%= link_to 'Edit Stock', edit_stock_path(@stock), :class => "btn btn-warning" %> 
 
-<%= link_to 'Delete', @stock, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"  %>
+  <%= link_to 'Delete Stock', @stock, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"  %>
 
-<%= link_to 'Back', stocks_path %>
+</div>
+
+<%= link_to 'Back', stocks_path, :class => "btn btn-primary" %>
