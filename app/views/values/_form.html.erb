@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :date %>
-    <%= form.date_select :date %>
+    <%= form.date_field :date %>
   </div>
 
   <div class="field">
@@ -21,8 +21,10 @@
     <%= form.text_field :value %>
   </div>
 
-  <%= hidden_field_tag 'value[facade_id]', params[:facade_id] %>
-
+  <div class="field">
+    <%= form.label :stock_id %><br>
+    <%= form.collection_select(:stock_id, Stock.all, :id, :name) %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

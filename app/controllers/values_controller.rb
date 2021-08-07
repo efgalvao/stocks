@@ -4,7 +4,7 @@ class ValuesController < ApplicationController
   # GET /values
   # GET /values.json
   def index
-    @values = Value.where(facade_id: params[:facade_id]).includes(:facade)
+    @values = Value.includes(:stock).all
   end
 
   # GET /values/1
@@ -29,7 +29,7 @@ class ValuesController < ApplicationController
 
     respond_to do |format|
       if @value.save
-        format.html { redirect_to facade_values_path(@value.facade_id), notice: 'Value was successfully created.' }
+        format.html { redirect_to values_path, notice: 'Value was successfully created.' }
         format.json { render :show, status: :created, location: @value }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class ValuesController < ApplicationController
     respond_to do |format|
       if @value.update(value_params)
         format.html do
-          redirect_to facade_values_path(params[:facade_id]), notice: 'Value was successfully updated.'
+          redirect_to value_path(@value), notice: 'Value was successfully updated.'
         end
         format.json { render :show, status: :ok, location: @value }
       else
@@ -60,7 +60,7 @@ class ValuesController < ApplicationController
     @value.destroy
     respond_to do |format|
       format.html do
-        redirect_to facade_values_path(params[:facade_id]), notice: 'Value was successfully destroyed.'
+        redirect_to values_path, notice: 'Value was successfully destroyed.'
       end
       format.json { head :no_content }
     end
@@ -75,6 +75,6 @@ class ValuesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def value_params
-    params.require(:value).permit(:date, :value, :facade_id)
+    params.require(:value).permit(:date, :value, :stock_id)
   end
 end

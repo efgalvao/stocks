@@ -1,6 +1,5 @@
 <h1>Editing Value</h1>
 
-<%= render 'update', value: @value %>
+<%= render 'form', value: @value %>
 
-<%= link_to 'Alterar', edit_facade_value_path(id: @value.id) %> |
-<%= link_to 'Voltar', facade_values_path %>
+<%= link_to 'Back', values_path, :class => "btn btn-primary" %>

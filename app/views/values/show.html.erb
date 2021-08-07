@@ -11,9 +11,9 @@
 </p>
 
 <p>
-  <strong>Facade:</strong>
-  <%= @value.facade.name.upcase %>
+  <strong>Stock:</strong>
+  <%= @value.stock.name.upcase %>
 </p>
 
-<%= link_to 'Alterar', edit_facade_value_path(id: @value.id) %> |
-<%= link_to 'Voltar', facade_values_path %>
+<%= link_to 'Edit', edit_stock_value_path(id: @value.id), :class => "btn btn-warning" %> |
+<%= link_to 'Back', stock_values_path, :class => "btn btn-primary" %>
