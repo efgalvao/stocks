@@ -10,6 +10,7 @@ class DividendsController < ApplicationController
   # GET /dividends/1
   # GET /dividends/1.json
   def show
+    @dividend
   end
 
   # GET /dividends/new
@@ -28,7 +29,7 @@ class DividendsController < ApplicationController
 
     respond_to do |format|
       if @dividend.save
-        format.html { redirect_to facade_dividends_path(@dividend.facade_id), notice: 'Dividend was successfully created.' }
+        format.html { redirect_to dividends_path, notice: 'Dividend was successfully created.' }
         format.json { render :show, status: :created, location: @dividend }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class DividendsController < ApplicationController
   def update
     respond_to do |format|
       if @dividend.update(dividend_params)
-        format.html { redirect_to facade_dividends_path(@dividend.facade_id), notice: 'Dividend was successfully updated.' }
+        format.html { redirect_to stock_dividends_path(@dividend.stock_id), notice: 'Dividend was successfully updated.' }
         format.json { render :show, status: :ok, location: @dividend }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class DividendsController < ApplicationController
   def destroy
     @dividend.destroy
     respond_to do |format|
-      format.html { redirect_to facade_dividends_path(@dividend.facade_id), notice: 'Dividend was successfully destroyed.' }
+      format.html { redirect_to stock_dividends_path(@dividend.stock_id), notice: 'Dividend was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +70,6 @@ class DividendsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def dividend_params
-      params.require(:dividend).permit(:date, :value, :facade_id)
+      params.require(:dividend).permit(:date, :value, :stock_id)
     end
 end
