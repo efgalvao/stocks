@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>
+<div class="title">
     <%= @stock.name %> Details
-</h1>
+</div>
 
 <% if !@stock.quotes.blank? %>
   <table class="table table-hover">
@@ -10,13 +10,13 @@
       <tr>
         <th> Aquisition Date </th>
         <th> Aquisition Value </th>
-        <th> Actions </th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <% for quote in @stock.quotes %>
       <tr>
-        <td> <%= quote.aquisition_date %> </td>
+        <td> <%= quote.aquisition_date.strftime('%d %B - %Y') %> </td>
         <td> <%= quote.aquisition_value %> </td>
         <td> <%= link_to "Edit", edit_quote_path(id: quote.id), :class => "btn btn-warning"  %>
              <%= link_to 'Delete', quote_path(id: quote.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
@@ -28,9 +28,9 @@
 <% end %>
 
 <div class="buttons">
-  <%= link_to 'Edit Stock', edit_stock_path(@stock), :class => "btn btn-warning" %> 
+  <%= link_to 'Edit', edit_stock_path(@stock), :class => "btn btn-warning" %> 
 
-  <%= link_to 'Delete Stock', @stock, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"  %>
+  <%= link_to 'Delete', @stock, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"  %>
 
 </div>
 
