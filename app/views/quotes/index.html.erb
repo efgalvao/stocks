@@ -12,14 +12,14 @@
       <th>Aquisition date</th>
       <th>Aquisition value</th>
       <th>Stock</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% stock.quotes.each do |quote| %>
       <tr>
-        <td><%= quote.aquisition_date %></td>
+        <td><%= quote.aquisition_date.strftime('%d %B - %Y') %></td>
         <td><%= quote.aquisition_value %></td>
         <td><%= quote.stock.name %></td>
         <td><%= link_to 'Edit', edit_quote_path(id: quote.id), :class => "btn btn-warning" %>
