@@ -1,9 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<p class=" title">
   <strong>Name:</strong>
   <%= @account.name %>
 </p>
 
-<%= link_to 'Alterar', edit_account_path(@account) %> |
-<%= link_to 'Voltar', accounts_path %>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Total value</th>
+      <th colspan="2">Actions</th>
+    </tr>
+  <tbody>
+    <% @account.stocks.each do |stock| %>
+      <tr>
+        <td><%= stock.name %></td>
+        <td><%= stock.total_amount %></td>
+        <td><%= link_to 'Details',  stock_path(id: stock.id), :class => "btn btn-primary" %>
+        <%= link_to 'Edit', edit_stock_path(id: stock.id), :class => "btn btn-warning" %>
+        <%= link_to 'Delete', stock_path(id: stock.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+    <tbody>
+</table>
+<%= link_to 'Edit', edit_account_path(@account), :class => "btn btn-warning" %>
+<%= link_to 'Back', accounts_path, :class => "btn btn-primary" %>
