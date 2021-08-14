@@ -1,76 +1,74 @@
-#                                Prefix Verb   URI Pattern                                                                              Controller#Action
-#                              accounts GET    /accounts(.:format)                                                                      accounts#index
-#                                       POST   /accounts(.:format)                                                                      accounts#create
-#                           new_account GET    /accounts/new(.:format)                                                                  accounts#new
-#                          edit_account GET    /accounts/:id/edit(.:format)                                                             accounts#edit
-#                               account GET    /accounts/:id(.:format)                                                                  accounts#show
-#                                       PATCH  /accounts/:id(.:format)                                                                  accounts#update
-#                                       PUT    /accounts/:id(.:format)                                                                  accounts#update
-#                                       DELETE /accounts/:id(.:format)                                                                  accounts#destroy
-#                         facade_stocks GET    /facades/:facade_id/stocks(.:format)                                                     stocks#index
-#                                       POST   /facades/:facade_id/stocks(.:format)                                                     stocks#create
-#                      new_facade_stock GET    /facades/:facade_id/stocks/new(.:format)                                                 stocks#new
-#                     edit_facade_stock GET    /facades/:facade_id/stocks/:id/edit(.:format)                                            stocks#edit
-#                          facade_stock GET    /facades/:facade_id/stocks/:id(.:format)                                                 stocks#show
-#                                       PATCH  /facades/:facade_id/stocks/:id(.:format)                                                 stocks#update
-#                                       PUT    /facades/:facade_id/stocks/:id(.:format)                                                 stocks#update
-#                                       DELETE /facades/:facade_id/stocks/:id(.:format)                                                 stocks#destroy
-#                      facade_dividends GET    /facades/:facade_id/dividends(.:format)                                                  dividends#index
-#                                       POST   /facades/:facade_id/dividends(.:format)                                                  dividends#create
-#                   new_facade_dividend GET    /facades/:facade_id/dividends/new(.:format)                                              dividends#new
-#                  edit_facade_dividend GET    /facades/:facade_id/dividends/:id/edit(.:format)                                         dividends#edit
-#                       facade_dividend GET    /facades/:facade_id/dividends/:id(.:format)                                              dividends#show
-#                                       PATCH  /facades/:facade_id/dividends/:id(.:format)                                              dividends#update
-#                                       PUT    /facades/:facade_id/dividends/:id(.:format)                                              dividends#update
-#                                       DELETE /facades/:facade_id/dividends/:id(.:format)                                              dividends#destroy
-#                         facade_values GET    /facades/:facade_id/values(.:format)                                                     values#index
-#                                       POST   /facades/:facade_id/values(.:format)                                                     values#create
-#                      new_facade_value GET    /facades/:facade_id/values/new(.:format)                                                 values#new
-#                     edit_facade_value GET    /facades/:facade_id/values/:id/edit(.:format)                                            values#edit
-#                          facade_value GET    /facades/:facade_id/values/:id(.:format)                                                 values#show
-#                                       PATCH  /facades/:facade_id/values/:id(.:format)                                                 values#update
-#                                       PUT    /facades/:facade_id/values/:id(.:format)                                                 values#update
-#                                       DELETE /facades/:facade_id/values/:id(.:format)                                                 values#destroy
-#                               facades GET    /facades(.:format)                                                                       facades#index
-#                                       POST   /facades(.:format)                                                                       facades#create
-#                            new_facade GET    /facades/new(.:format)                                                                   facades#new
-#                           edit_facade GET    /facades/:id/edit(.:format)                                                              facades#edit
-#                                facade GET    /facades/:id(.:format)                                                                   facades#show
-#                                       PATCH  /facades/:id(.:format)                                                                   facades#update
-#                                       PUT    /facades/:id(.:format)                                                                   facades#update
-#                                       DELETE /facades/:id(.:format)                                                                   facades#destroy
-#         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
-#            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
-#         rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                  action_mailbox/ingresses/sendgrid/inbound_emails#create
-#   rails_mandrill_inbound_health_check GET    /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#health_check
-#         rails_mandrill_inbound_emails POST   /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create
-#          rails_mailgun_inbound_emails POST   /rails/action_mailbox/mailgun/inbound_emails/mime(.:format)                              action_mailbox/ingresses/mailgun/inbound_emails#create
-#        rails_conductor_inbound_emails GET    /rails/conductor/action_mailbox/inbound_emails(.:format)                                 rails/conductor/action_mailbox/inbound_emails#index
-#                                       POST   /rails/conductor/action_mailbox/inbound_emails(.:format)                                 rails/conductor/action_mailbox/inbound_emails#create
-#     new_rails_conductor_inbound_email GET    /rails/conductor/action_mailbox/inbound_emails/new(.:format)                             rails/conductor/action_mailbox/inbound_emails#new
-#    edit_rails_conductor_inbound_email GET    /rails/conductor/action_mailbox/inbound_emails/:id/edit(.:format)                        rails/conductor/action_mailbox/inbound_emails#edit
-#         rails_conductor_inbound_email GET    /rails/conductor/action_mailbox/inbound_emails/:id(.:format)                             rails/conductor/action_mailbox/inbound_emails#show
-#                                       PATCH  /rails/conductor/action_mailbox/inbound_emails/:id(.:format)                             rails/conductor/action_mailbox/inbound_emails#update
-#                                       PUT    /rails/conductor/action_mailbox/inbound_emails/:id(.:format)                             rails/conductor/action_mailbox/inbound_emails#update
-#                                       DELETE /rails/conductor/action_mailbox/inbound_emails/:id(.:format)                             rails/conductor/action_mailbox/inbound_emails#destroy
-# rails_conductor_inbound_email_reroute POST   /rails/conductor/action_mailbox/:inbound_email_id/reroute(.:format)                      rails/conductor/action_mailbox/reroutes#create
-#                    rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
-#             rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
-#                    rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
-#             update_rails_disk_service PUT    /rails/active_storage/disk/:encoded_token(.:format)                                      active_storage/disk#update
-#                  rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
+#                 Prefix Verb   URI Pattern                                                                              Controller#Action
+#                   root GET      /                                                                                     stocks#main
+#       account_balances GET      /accounts/:account_id/balances(.:format)                                              balances#index
+#                        POST     /accounts/:account_id/balances(.:format)                                              balances#create
+#    new_account_balance GET      /accounts/:account_id/balances/new(.:format)                                          balances#new
+#   edit_account_balance GET      /accounts/:account_id/balances/:id/edit(.:format)                                     balances#edit
+#        account_balance GET      /accounts/:account_id/balances/:id(.:format)                                          balances#show
+#                        PATCH    /accounts/:account_id/balances/:id(.:format)                                          balances#update
+#                        PUT      /accounts/:account_id/balances/:id(.:format)                                          balances#update
+#                        DELETE   /accounts/:account_id/balances/:id(.:format)                                          balances#destroy
+#               accounts GET      /accounts(.:format)                                                                   accounts#index
+#                        POST     /accounts(.:format)                                                                   accounts#create
+#            new_account GET      /accounts/new(.:format)                                                               accounts#new
+#           edit_account GET      /accounts/:id/edit(.:format)                                                          accounts#edit
+#                account GET      /accounts/:id(.:format)                                                               accounts#show
+#                        PATCH    /accounts/:id(.:format)                                                               accounts#update
+#                        PUT      /accounts/:id(.:format)                                                               accounts#update
+#                        DELETE   /accounts/:id(.:format)                                                               accounts#destroy
+#        stock_dividends POST     /stocks/:stock_id/dividends(.:format)                                                 dividends#create
+#         stock_dividend DELETE   /stocks/:stock_id/dividends/:id(.:format)                                             dividends#destroy
+#           stock_values POST     /stocks/:stock_id/values(.:format)                                                    values#create
+#            stock_value DELETE   /stocks/:stock_id/values/:id(.:format)                                                values#destroy
+#                 stocks GET      /stocks(.:format)                                                                     stocks#index
+#                        POST     /stocks(.:format)                                                                     stocks#create
+#              new_stock GET      /stocks/new(.:format)                                                                 stocks#new
+#             edit_stock GET      /stocks/:id/edit(.:format)                                                            stocks#edit
+#                  stock GET      /stocks/:id(.:format)                                                                 stocks#show
+#                        PATCH    /stocks/:id(.:format)                                                                 stocks#update
+#                        PUT      /stocks/:id(.:format)                                                                 stocks#update
+#                        DELETE   /stocks/:id(.:format)                                                                 stocks#destroy
+#                        POST     /quotes(.:format)                                                                     quotes#create
+#              new_quote GET      /quotes/new(.:format)                                                                 quotes#new
+#             edit_quote GET      /quotes/:id/edit(.:format)                                                            quotes#edit
+#                  quote GET      /quotes/:id(.:format)                                                                 quotes#show
+#                        PATCH    /quotes/:id(.:format)                                                                 quotes#update
+#                        PUT      /quotes/:id(.:format)                                                                 quotes#update
+#                        DELETE   /quotes/:id(.:format)                                                                 quotes#destroy
+#              dividends GET      /dividends(.:format)                                                                  dividends#index
+#                        POST     /dividends(.:format)                                                                  dividends#create
+#           new_dividend GET      /dividends/new(.:format)                                                              dividends#new
+#          edit_dividend GET      /dividends/:id/edit(.:format)                                                         dividends#edit
+#               dividend GET      /dividends/:id(.:format)                                                              dividends#show
+#                        PATCH    /dividends/:id(.:format)                                                              dividends#update
+#                        PUT      /dividends/:id(.:format)                                                              dividends#update
+#                 values GET      /values(.:format)                                                                     values#index
+#                 charts GET      /charts(.:format)                                                                     charts#index
+#                        POST     /charts(.:format)                                                                     charts#create
+#              new_chart GET      /charts/new(.:format)                                                                 charts#new
+#             edit_chart GET      /charts/:id/edit(.:format)                                                            charts#edit
+#                  chart GET      /charts/:id(.:format)                                                                 charts#show
+#                        PATCH    /charts/:id(.:format)                                                                 charts#update
+#                        PUT      /charts/:id(.:format)                                                                 charts#update
+#                        DELETE   /charts/:id(.:format)                                                                 charts#destroy
 
 Rails.application.routes.draw do
-  root 'facades#main'
+  root 'stocks#main'
 
-  resources :accounts  do
+  resources :accounts do
       resources :balances
   end
-  resources :facades do
-    resources :stocks
-    resources :dividends
-    resources :values
+  resources :stocks do
+    resources :dividends, only: [:destroy]
+    resources :values, only: %i[edit update destroy]
   end
+
+  resources :quotes
+
+  resources :dividends, except: [:destroy]
+
+  resources :values, except: %i[edit update destroy]
+
   resources :charts
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
