@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_02_04_141009) do
 
   create_table "balances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.float "balance"
-    t.date "date"
+    t.datetime "date"
     t.bigint "account_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_02_04_141009) do
   end
 
   create_table "dividends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.date "date"
+    t.datetime "date"
     t.float "value"
     t.bigint "stock_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_02_04_141009) do
   end
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.date "aquisition_date"
+    t.datetime "aquisition_date"
     t.float "aquisition_value"
     t.bigint "stock_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2021_02_04_141009) do
 
   create_table "stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
+    t.float "total_invested", default: 0.0
     t.bigint "account_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -54,7 +55,7 @@ ActiveRecord::Schema.define(version: 2021_02_04_141009) do
   end
 
   create_table "values", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.date "date"
+    t.datetime "date"
     t.float "value"
     t.bigint "stock_id", null: false
     t.datetime "created_at", precision: 6, null: false
