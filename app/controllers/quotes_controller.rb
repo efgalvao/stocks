@@ -5,7 +5,7 @@ class QuotesController < ApplicationController
   # GET /quotes.json
   def index
     # @quotes = Quote.where(stock_id: params[:stock_id])
-    @quotes = Quote.all
+    @stocks = Stock.all
   end
 
   # GET /quotes/1
@@ -29,7 +29,7 @@ class QuotesController < ApplicationController
 
     respond_to do |format|
       if @quote.save
-        format.html { redirect_to stock_quotes_path, notice: 'Quote was successfully created.' }
+        format.html { redirect_to quotes_path, notice: 'Quote was successfully created.' }
         format.json { render :show, status: :created, location: @quote }
       else
         format.html { render :new }
