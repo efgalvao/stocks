@@ -1,19 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @value.date %>
-</p>
+<div class="card-holder">
+  <div class="card mb-3">
+    <p>
+      <strong>Date:</strong>
+      <%= @value.date.strftime('%d %B - %Y') %>
+    </p>
 
-<p>
-  <strong>Value:</strong>
-  <%= @value.value %>
-</p>
+    <p>
+      <strong>Value:</strong>
+      <%= @value.value %>
+    </p>
 
-<p>
-  <strong>Stock:</strong>
-  <%= @value.stock.name.upcase %>
-</p>
+    <p>
+      <strong>Stock:</strong>
+      <%= @value.stock.name.upcase %>
+    </p>
 
-<%= link_to 'Edit', edit_stock_value_path(id: @value.id), :class => "btn btn-warning" %> |
-<%= link_to 'Back', stock_values_path, :class => "btn btn-primary" %>
+    <%= link_to 'Edit', edit_stock_value_path(id: @value.id, stock_id: @value.stock.id), :class => "btn btn-warning" %>
+    <%= link_to 'Back', values_path, :class => "btn btn-primary" %>
+
+  </div>
+</div>
