@@ -1,21 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;padding: 5px;">
-<p>
-  <strong>Aquisition date:</strong>
-  <%= @quote.aquisition_date.strftime('%d %B - %Y') %>
-</p>
+<div class="card-holder">
+  <div class="card mb-3">
+    <p>
+      <strong>Aquisition date:</strong>
+      <%= @quote.aquisition_date.strftime('%d %B - %Y') %>
+    </p>
 
-<p>
-  <strong>Aquisition value:</strong>
-  <%= @quote.aquisition_value %>
-</p>
+    <p>
+      <strong>Aquisition value:</strong>
+      <%= @quote.aquisition_value %>
+    </p>
 
-<p>
-  <strong>Stock:</strong>
-  <%= @quote.stock.name %>
-</p>
+    <p>
+      <strong>Stock:</strong>
+      <%= @quote.stock.name %>
+    </p>
+
+    <%= link_to 'Edit', edit_quote_path(@quote), class: "btn btn-warning" %>
+    <%= link_to 'Back', quotes_path,  class: "btn btn-primary" %>
+  </div>
 </div>
-
-<%= link_to 'Edit', edit_quote_path(@quote), class: "btn btn-warning" %>
-<%= link_to 'Back', quotes_path,  class: "btn btn-primary" %>

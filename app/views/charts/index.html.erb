@@ -4,14 +4,14 @@
   <h1>Gráficos</h1>
 </div>
 
-<div class="facades">
-    <% @facades.each do |facade| %>
-        <%= link_to facade.name, chart_path(facade), class:"facade" %>
+<div class="stocks">
+    <% @stocks.each do |stock| %>
+        <%= link_to stock.name, chart_path(stock), class:"stock" %>
     <% end %>
 </div>
 
-<%= line_chart Facade.pluck(:id).uniq.map{|i| {
-		name: Facade.find(i).name,
-		data: Facade.find(i).values.monthly_value
+<%= line_chart Stock.pluck(:id).uniq.map{|i| {
+		name: Stock.find(i).name,
+		data: Stock.find(i).values.monthly_value
 		} } %>
-<%# <%= link_to 'Cadastrar novo Passivo', new_facade_path, class:"new" %> %>
+<%# <%= link_to 'Cadastrar novo Passivo', new_stock_path, class:"new" %> %>
