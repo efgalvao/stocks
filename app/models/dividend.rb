@@ -1,5 +1,5 @@
 class Dividend < ApplicationRecord
-  belongs_to :stock
+  belongs_to :stock, touch: true
 
   before_create :set_date
 
