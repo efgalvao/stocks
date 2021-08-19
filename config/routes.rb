@@ -61,7 +61,8 @@ Rails.application.routes.draw do
   root 'stocks#main'
 
   resources :accounts do
-      resources :balances
+    get '/summary', to: 'accounts#summary'
+    resources :balances
   end
   resources :stocks do
     get '/summary', to: 'stocks#summary'
