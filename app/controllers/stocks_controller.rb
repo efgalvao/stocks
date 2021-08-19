@@ -60,6 +60,11 @@ class StocksController < ApplicationController
     end
   end
 
+  # GET/stocks/1/summary
+  def summary
+    @stock = Stock.find(params[:stock_id])
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

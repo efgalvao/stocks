@@ -64,6 +64,7 @@ Rails.application.routes.draw do
       resources :balances
   end
   resources :stocks do
+    get '/summary', to: 'stocks#summary'
     resources :dividends, only: [:destroy]
     resources :values, only: %i[edit update destroy]
   end
@@ -74,6 +75,6 @@ Rails.application.routes.draw do
 
   resources :values, except: %i[edit update destroy]
 
-  resources :charts
+  resources :charts, only: %i[index]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
