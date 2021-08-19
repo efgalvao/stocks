@@ -1,17 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 <div class="title">
-  <h1>Gráficos</h1>
+  <h1>Summary</h1>
 </div>
 
-<div class="stocks">
-    <% @stocks.each do |stock| %>
-        <%= link_to stock.name, chart_path(stock), class:"stock" %>
-    <% end %>
-</div>
+<% @accounts.each do |account| %>
+    <div class="summary-account">
+      <div class="summay-subtitle">
+        <%= account.name %>
+      </div>
+      <% account.stocks.each do |stock| %>
 
-<%= line_chart Stock.pluck(:id).uniq.map{|i| {
-		name: Stock.find(i).name,
-		data: Stock.find(i).values.monthly_value
-		} } %>
-<%# <%= link_to 'Cadastrar novo Passivo', new_stock_path, class:"new" %> %>
+      <div class="summary-chart">
+        <%= line_chart Stock.pluck(:id).uniq.map{|i| {
+            name: Stock.find(i).name,
+            data: Stock.find(i).values.monthly_value
+            } } %>
+      </div>
+
+      <div class="summary-stocks">
+        <%= link_to stock.name, chart_path(stock), class:"summary-stock" %>
+      </div>
+  </div>
+
+  <% end %>
+<% end%>

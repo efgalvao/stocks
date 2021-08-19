@@ -26,6 +26,12 @@
     <%= form.collection_select(:stock_id, Stock.all, :id, :name) %>
   </div>
 
+  <div class="field">
+    <%= form.label :quantity %>
+    <%# <%= form.text_field :quantity %> 
+    <%= number_field_tag 'quantity' %>
+  </div>
+
   <div class="actions">
     <%= form.submit class: "btn btn-success" %>
   </div>
