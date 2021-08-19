@@ -61,6 +61,11 @@ class AccountsController < ApplicationController
     end
   end
 
+   # GET/accounts/1/summary
+   def summary
+    @account = Account.find(params[:account_id])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_account
