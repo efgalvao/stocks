@@ -3,7 +3,13 @@ class Balance < ApplicationRecord
 
   before_create :set_date
 
-  def self.monthly_balance
+  # Balance of current month
+  scope :current, lambda {
+                    where(date: DateTime.current.beginning_of_month..DateTime.current
+                      .end_of_month)
+                  }
+
+  def monthly_balance
     group_by_month(:date, last: 12, current: true).maximum('balance')
   end
 
