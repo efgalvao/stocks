@@ -10,10 +10,10 @@ class Stock < ApplicationRecord
     quotes.first(amount).destroy
   end
 
-  # def total_invested
-  #   value = values.order('date').first&.value || quotes.order('aquisition_date desc').first.aquisition_value
-  #   value * quotes.count
-  # end
+  def total_invested
+    value = values.order('date').first&.value || quotes.order('aquisition_date desc').first.aquisition_value
+    value * quotes.count
+  end
 
   def updated_balance
     value = if values.order('date desc').first.nil?
@@ -24,4 +24,15 @@ class Stock < ApplicationRecord
 
     value * quotes.count
   end
+  # TODO create a method to calculate balance of a specific month
+  def month_balance
+    value = if values.where(date:  desc').first.nil?
+              quotes.order('aquisition_date desc').first.aquisition_value
+            else
+              values.order('date desc').first&.value
+            end
+
+    value * quotes.count
+  end
+  
 end
