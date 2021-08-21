@@ -1,7 +1,11 @@
 class Balance < ApplicationRecord
-  belongs_to :account
+  belongs_to :account, touch: true
 
   before_create :set_date
+
+  def self.monthly_balance
+    group_by_month(:date, last: 12, current: true).maximum('balance')
+  end
 
   private
 
