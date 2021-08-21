@@ -41,13 +41,13 @@ Total dividends received:
 </div>
 
 <div class="stock-charts">
-<h3> Value in the last 12 months:</h3>
-<%= line_chart @stock.values.monthly_value %>
+<h3> Average value in the last 12 months:</h3>
+<%= line_chart @stock.values.monthly_value, precision: 5, curve: false %>
 
 
 <h3> Dividends:</h3>
 <%= line_chart @stock.dividends.monthly_dividend %>
 
 <h3><strong>Quotes Quantity:</strong></h3>
-<%= line_chart @stock.quotes.month_qty %>
+<%= column_chart @stock.quotes.month_qty %>
 </div>
