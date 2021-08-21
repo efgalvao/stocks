@@ -2,52 +2,45 @@
 
 <div class="summary">
   <div class="summary-title">
-  <h1><strong>Summary for <%= @account.name %>:</strong>: </h1>
-  </div>
+    <h1><strong>Summary for <%= @account.name %>:</strong>: </h1>
+</div>
+
 <div class="account-item">
-total amount of stocks bought:
-</div>
-<%= @account.stocks.size %>
-
-<%# <div class="summary-item">
-Quotes bought this month:
-<%= @account.stocks.bought_this_month.size %>
-</div> %>
-
-<div class="summary-item">
-Total amount invested:
-<%= number_to_currency(@account.quotes.sum(:aquisition_value), unit: 'R$', separator: ',', delimiter: '') %>
+  total amount of stocks:
+  <%= @account.stocks.size %>
 </div>
 
 <div class="summary-item">
-Average paid price:
-<%= number_to_currency(@account.quotes.average_price, unit: 'R$', separator: ',', delimiter: '') %>
+  Current total value:
+  <%= number_to_currency(@account.generate_balance.balance, unit: 'R$', separator: ',', delimiter: '') %>
 </div>
 
 <div class="summary-item">
-Current value per share:
-<%= number_to_currency(@account.values.last.value, unit: 'R$', separator: ',', delimiter: '') %>
+  Stocks:
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quotes</th>
+        <th>Total Invested</th>
+        <th>Current value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @account.stocks.each do |stock| %>
+        <tr>
+          <td><%= stock.name %></td>
+          <td><%= stock.quotes.count %></td>
+          <td><%= stock.total_invested %></td>
+          <td><%= stock.updated_balance %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
-<div class="summary-item">
-Current total value:
-<%= number_to_currency(@account.values.sum(:value), unit: 'R$', separator: ',', delimiter: '') %>
-</div>
-
-<div class="summary-item">
-Total dividends received:
-<%= number_to_currency(@account.dividends.sum(:value), unit: 'R$', separator: ',', delimiter: '') %>
-</div>
-</div>
 
 <div class="summary-charts">
-<h3> Value in the last 12 months:</h3>
-<%= line_chart @account.values.monthly_value %>
-
-
-<h3> Dividends:</h3>
-<%= line_chart @account.dividends.monthly_dividend %>
-
-<h3><strong>Quotes Quantity:</strong></h3>
-<%= line_chart @account.quotes.month_qty %>
+<h3> Balance in the last 12 months:</h3>
+<%= line_chart @account.balances.monthly_balance %>
 </div>
