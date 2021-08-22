@@ -15,11 +15,13 @@
         <%= line_chart Stock.pluck(:id).uniq.map{|i| {
             name: Stock.find(i).name,
             data: Stock.find(i).values.monthly_value
-            } } %>
+            } }, precision: 5 %>
       </div>
 
+      # TODO Add a chart for total value of account monthly
+
       <div class="summary-stocks">
-        <%= link_to stock.name, chart_path(stock), class:"summary-stock" %>
+        <%= link_to stock.name, stock_summary_path(stock), class:"summary-stock" %>
       </div>
   </div>
 
