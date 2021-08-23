@@ -6,10 +6,10 @@ class Balance < ApplicationRecord
   # Balance of current month
   scope :current, lambda {
                     where(date: DateTime.current.beginning_of_month..DateTime.current
-                      .end_of_month)
+                      .end_of_month).first
                   }
 
-  def monthly_balance
+  def self.monthly_balance
     group_by_month(:date, last: 12, current: true).maximum('balance')
   end
 
