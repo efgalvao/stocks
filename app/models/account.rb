@@ -20,12 +20,8 @@ class Account < ApplicationRecord
     end
   end
 
-  def monthly_value
-    if values.empty?
-      quotes.group_by_month(:aquisition_date, last: 12, current: true).average('aquisition_value')
-      # quotes.order('aquisition_date desc').first&.aquisition_value
-    else
-      values.group_by_month(:date, last: 12, current: true).average('value')
-    end
+  def monthly_balance
+    generate_balance if balances.empty?
+    balances.group_by_month(:date, last: 12, current: true).average('balance')
   end
 end
