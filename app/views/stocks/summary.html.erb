@@ -31,7 +31,7 @@ Current value per share:
 
 <div class="stock-item">
 Current total value:
-<%= number_to_currency(@stock.values.sum(:value), unit: 'R$', separator: ',', delimiter: '') %>
+<%= number_to_currency(@stock.total_current_value, unit: 'R$', separator: ',', delimiter: '') %>
 </div>
 
 <div class="stock-item">

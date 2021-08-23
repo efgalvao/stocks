@@ -23,7 +23,7 @@ class Stock < ApplicationRecord
 
     value * quotes.count
   end
-  # TODO create a method to calculate balance of a specific month
+  # TODO: create a method to calculate balance of a specific month
   # def month_balance
   #   value = if values.where(date:  desc').first.nil?
   #             quotes.order('aquisition_date desc').first.aquisition_value
@@ -43,6 +43,10 @@ class Stock < ApplicationRecord
     end
   end
 
+  def total_current_value
+    current_value * quotes.count
+  end
+
   def monthly_value
     if values.empty?
       quotes.group_by_month(:aquisition_date, last: 12, current: true).average('aquisition_value')
@@ -50,7 +54,5 @@ class Stock < ApplicationRecord
     else
       values.group_by_month(:date, last: 12, current: true).average('value')
     end
-end
-  
-  
+  end
 end
