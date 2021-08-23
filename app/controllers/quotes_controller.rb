@@ -1,17 +1,15 @@
 class QuotesController < ApplicationController
-  before_action :set_quote, only: [:show, :edit, :update, :destroy]
+  before_action :set_quote, only: %i[show edit update destroy]
 
   # GET /quotes
   # GET /quotes.json
   def index
-    # @quotes = Quote.where(stock_id: params[:stock_id])
-    @stocks = Stock.all
+    @stocks = Stock.includes(:quotes).all
   end
 
   # GET /quotes/1
   # GET /quotes/1.json
-  def show
-  end
+  def show; end
 
   # GET /quotes/new
   def new
@@ -19,16 +17,18 @@ class QuotesController < ApplicationController
   end
 
   # GET /quotes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /quotes
   # POST /quotes.json
   def create
     @quote = Quote.new(quote_params)
-
+    quantity = params[:quantity].to_i - 1
     respond_to do |format|
       if @quote.save
+        Quote.transaction do
+          quantity.times { Quote.create(quote_params) }
+        end
         format.html { redirect_to quotes_path, notice: 'Quote was successfully created.' }
         format.json { render :show, status: :created, location: @quote }
       else
@@ -57,19 +57,20 @@ class QuotesController < ApplicationController
   def destroy
     @quote.destroy
     respond_to do |format|
-      format.html { redirect_to stock_quote_path, notice: 'Quote was successfully destroyed.' }
+      format.html { redirect_to quotes_path, notice: 'Quote was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_quote
-      @quote = Quote.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def quote_params
-      params.require(:quote).permit(:aquisition_date, :aquisition_value, :stock_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_quote
+    @quote = Quote.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def quote_params
+    params.require(:quote).permit(:aquisition_date, :aquisition_value, :stock_id, :quantity)
+  end
 end

@@ -19,7 +19,7 @@
   </thead>
 
   <tbody>
-    <% stock.quotes.each do |quote| %>
+    <% stock.quotes.order('aquisition_date desc').limit(10).each do |quote| %>
       <tr>
         <td><%= quote.aquisition_date.strftime('%d %B - %Y') %></td>
         <td><%= quote.aquisition_value %></td>
