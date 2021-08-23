@@ -9,9 +9,7 @@ class ValuesController < ApplicationController
 
   # GET /values/1
   # GET /values/1.json
-  def show
-    @value = Value.find(params[:id])
-  end
+  def show; end
 
   # GET /values/new
   def new
@@ -19,8 +17,7 @@ class ValuesController < ApplicationController
   end
 
   # GET /values/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /values
   # POST /values.json

@@ -16,25 +16,15 @@ class Stock < ApplicationRecord
 
   def updated_balance
     value = if values.order('date desc').first.nil?
-              quotes.order('aquisition_date desc').first.aquisition_value
+              quotes.order('aquisition_date desc').first&.aquisition_value
             else
               values.order('date desc').first&.value
             end
+    return 0 if value.nil?
 
     value * quotes.count
   end
-  # TODO: create a method to calculate balance of a specific month
-  # def month_balance
-  #   value = if values.where(date:  desc').first.nil?
-  #             quotes.order('aquisition_date desc').first.aquisition_value
-  #           else
-  #             values.order('date desc').first&.value
-  #           end
 
-  #   value * quotes.count
-  # end
-
-  # get the current value of stock
   def current_value
     if values.order('date desc').first&.value.nil?
       quotes.order('aquisition_date desc').first&.aquisition_value
@@ -44,13 +34,14 @@ class Stock < ApplicationRecord
   end
 
   def total_current_value
+    return 0 if current_value.nil?
+
     current_value * quotes.count
   end
 
   def monthly_value
     if values.empty?
       quotes.group_by_month(:aquisition_date, last: 12, current: true).average('aquisition_value')
-      # quotes.order('aquisition_date desc').first&.aquisition_value
     else
       values.group_by_month(:date, last: 12, current: true).average('value')
     end

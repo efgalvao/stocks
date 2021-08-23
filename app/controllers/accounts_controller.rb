@@ -61,19 +61,20 @@ class AccountsController < ApplicationController
     end
   end
 
-   # GET/accounts/1/summary
-   def summary
+  # GET/accounts/1/summary
+  def summary
     @account = Account.find(params[:account_id])
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_account
-      @account = Account.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def account_params
-      params.require(:account).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_account
+    @account = Account.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def account_params
+    params.require(:account).permit(:name)
+  end
 end
