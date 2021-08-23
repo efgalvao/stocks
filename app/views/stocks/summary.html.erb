@@ -16,7 +16,7 @@ Quotes bought this month:
 
 <div class="stock-item">
 Total amount invested:
-<%= number_to_currency(@stock.quotes.sum(:aquisition_value), unit: 'R$', separator: ',', delimiter: '') %>
+<%= number_to_currency(@stock.total_invested, unit: 'R$', separator: ',', delimiter: '') %>
 </div>
 
 <div class="stock-item">

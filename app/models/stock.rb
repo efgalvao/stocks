@@ -11,8 +11,7 @@ class Stock < ApplicationRecord
   end
 
   def total_invested
-    value = values.order('date').first&.value || quotes.order('aquisition_date desc').first.aquisition_value
-    value * quotes.count
+    quotes.sum(:aquisition_value).round(2)
   end
 
   def updated_balance
