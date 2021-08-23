@@ -1,22 +1,28 @@
 <p id="notice"><%= notice %></p>
 
 <div class="summary">
-  <div class="summary-title">
-    <h1><strong>Summary for <%= @account.name %>:</strong>: </h1>
-</div>
-
-<div class="account-item">
-  total amount of stocks:
-  <%= @account.stocks.size %>
+  <div class="summary-subtitle">
+    Summary for <%= @account.name %> account:
 </div>
 
 <div class="summary-item">
-  Current total value:
+  Total amount of stocks:<br />
+  <div class="item-value">
+  <%= @account.stocks.size %>
+  </div>
+</div>
+
+<div class="summary-item">
+  Current total value:<br />
+  <div class="item-value">
   <%= number_to_currency(@account.generate_balance.balance, unit: 'R$', separator: ',', delimiter: '') %>
 </div>
+</div>
 
-<div class="summary-item">
+<div class="chart-title">
   Stocks:
+  </div>
+<div class="summary-item">
   <table class="table table-hover">
     <thead>
       <tr>
@@ -40,7 +46,9 @@
 </div>
 
 
-<div class="summary-charts">
-<h3> Balance in the last 12 months:</h3>
+<div class="chart-title">
+Balance in the last 12 months:<br />
+</div>
+<div class="summary-chart">
 <%= line_chart @account.balances.monthly_balance %>
 </div>

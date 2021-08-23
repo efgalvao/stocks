@@ -109,3 +109,10 @@ margin-right: 15px;
   background-color: #333;
   color: white;
 }
+
+#notice {
+  font-size: 22px;
+  text-align: center;
+  padding: 8px;
+  margin: 12px 0;
+}

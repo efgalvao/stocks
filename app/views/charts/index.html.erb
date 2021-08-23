@@ -5,30 +5,31 @@
 </div>
 
 <% @accounts.each do |account| %>
-    <div class="summary-account">
-      <div class="summay-subtitle">
-        <%= account.name %>
-      </div>
-
-      <div class="summary-chart">
-        <div class="chart-title">
-          Monhly account balance:
-        </div>
-        <%= line_chart account.monthly_balance, precision: 5 %>
-
-        <div class="chart-title">
-          Monthly stock value:
-        </div>
-        <%= line_chart account.stocks.map { |stock| {
-          name: stock.name, data: stock.values.monthly_value
-          } }, precision: 5 %>
-      </div>
-
-      <% account.stocks.each do |stock| %>
-      <div class="summary-stocks">
-        <%= link_to stock.name, stock_summary_path(stock), class:"summary-stock" %>
-      </div>
+  <div class="summary-subtitle">
+    <%= link_to account.name, account_summary_path(account) %>
   </div>
 
+  <div class="chart-title">
+    Monhly account balance:
+  </div>
+  
+  <div class="summary-chart">
+    <%= line_chart account.monthly_balance, precision: 5 %>
+  </div>
+
+  <div class="chart-title">
+    Monthly stock value:
+  </div>
+
+  <div class="summary-chart">
+    <%= line_chart account.stocks.map { |stock| {
+        name: stock.name, data: stock.values.monthly_value
+        } }, precision: 5 %>
+  </div>
+
+  <% account.stocks.each do |stock| %>
+    <div class="summary-stocks">
+    <%= link_to stock.name, stock_summary_path(stock), class:"summary-stock" %>
+    </div>
   <% end %>
 <% end%>
