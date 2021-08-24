@@ -116,3 +116,10 @@ margin-right: 15px;
   padding: 8px;
   margin: 12px 0;
 }
+
+.form {
+  position: fixed;
+  top: 250px;
+  left: 35%;
+  width: 600px;
+}
