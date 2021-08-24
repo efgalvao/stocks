@@ -1,4 +1,4 @@
-<%= form_for @balance, url: {action: "create"} do |form| %>
+<%= form_for @balance do |form| %>
   <% if balance.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(balance.errors.count, "error") %> prohibited this balance from being saved:</h2>
@@ -11,19 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :balance %>
-    <%= form.text_field :balance %>
-  </div>
+  <form>
+    <div class="form-group">
+      <%= form.label :balance, class: "input-group-text" %>
+      <%= form.text_field :balance, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date %>
-  </div>
+    <div class="form-group">
+      <%= form.label :date, class: "input-group-text" %>
+      <%= form.date_field :date, class: "form-control" %>
+    </div>
 
-  <%= hidden_field_tag 'balance[account_id]', params[:account_id] %>
+    <div class="form-group">
+      <%= form.label :account_id, class: "input-group-text" %>
+      <%= form.collection_select(:account_id, Account.all, :id, :name, {}, {class: "custom-select"}) %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="form-group">
+      <%= form.submit  class: "btn btn-success" %>
+    </div>
+  </form>
 <% end %>

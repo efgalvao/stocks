@@ -1,6 +1,9 @@
-<h1>Editing Balance</h1>
+<div class="title">
+Edit Balance
+</div>
 
+<div class="form">
 <%= render 'form', balance: @balance %>
 
-<%= link_to 'Ver', @balance %> |
-<%= link_to 'Voltar', balances_path %>
+<%= link_to 'Back', balances_path, class: "btn btn-primary" %>
+</div>

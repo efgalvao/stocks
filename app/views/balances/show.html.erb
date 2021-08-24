@@ -1,19 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Balance:</strong>
-  <%= @balance.balance %>
-</p>
+<div class="card-holder">
+  <div class="card">
 
-<p>
-  <strong>Date:</strong>
-  <%= @balance.date %>
-</p>
+    <p>
+      <strong>Account:</strong>
+      <%= @balance.account.name %>
+    </p>
 
-<p>
-  <strong>Account:</strong>
-  <%= @balance.account.name.upcase %>
-</p>
+    <p>
+      <strong>Balance:</strong>
+        <%= @balance.balance %>
 
-<%= link_to 'Alterar', edit_account_balance_path(@balance) %> |
-<%= link_to 'Voltar', account_balances_path %>
+    </p>
+
+    <p>
+      <strong>Date:</strong>
+      <%= @balance.date.strftime('%d %B - %Y') %>
+
+    </p>
+
+    <%= link_to 'Edit', edit_account_balance_path(id: @balance.id, account_id: @balance.account.id), :class => "btn btn-warning" %>
+    <%= link_to 'Back', balances_path, :class => "btn btn-primary" %>
+
+  </div>
+</div>
