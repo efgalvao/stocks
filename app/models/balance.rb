@@ -9,6 +9,8 @@ class Balance < ApplicationRecord
                       .end_of_month).first
                   }
 
+  scope :newest_balance, -> { order('date desc').first }
+
   def self.monthly_balance
     group_by_month(:date, last: 12, current: true).maximum('balance')
   end
