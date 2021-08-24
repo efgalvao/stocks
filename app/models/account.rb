@@ -2,14 +2,19 @@ class Account < ApplicationRecord
   has_many :balances, dependent: :destroy
   has_many :stocks, dependent: :destroy
 
+  scope :savings_accounts, -> { where(savings: true) }
+
+  scope :stocks_accounts, -> { where(savings: false) }
+
   def generate_balance
     total = stocks.inject(0) { |sum, stock| stock.updated_balance + sum }
-    if balances.current.nil?
-      balances.create(balance: total)
+    if balances.current.blank?
+      balance = balances.create(balance: total)
     else
       balance = balances.current
       balance.balance = total
     end
+    balance.save
     balance
   end
 

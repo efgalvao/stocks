@@ -24,7 +24,7 @@ class AccountsController < ApplicationController
   # POST /accounts
   # POST /accounts.json
   def create
-    @account = Account.new(name: account_params[:name].upcase)
+    @account = Account.new(name: account_params[:name].upcase, savings: account_params[:savings])
 
     respond_to do |format|
       if @account.save
@@ -75,6 +75,6 @@ class AccountsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def account_params
-    params.require(:account).permit(:name)
+    params.require(:account).permit(:name, :savings)
   end
 end
