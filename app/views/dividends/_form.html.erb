@@ -1,4 +1,4 @@
-<%= form_for @dividend, url: { action: "create" } do |form| %>
+<%= form_for @dividend do |form| %>
   <% if dividend.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(dividend.errors.count, "error") %> prohibited this dividend from being saved:</h2>

@@ -40,7 +40,7 @@ class DividendsController < ApplicationController
   def update
     respond_to do |format|
       if @dividend.update(dividend_params)
-        format.html { redirect_to stock_dividends_path(@dividend.stock_id), notice: 'Dividend was successfully updated.' }
+        format.html { redirect_to dividend_path(@dividend.stock_id), notice: 'Dividend was successfully updated.' }
         format.json { render :show, status: :ok, location: @dividend }
       else
         format.html { render :edit }
@@ -54,7 +54,7 @@ class DividendsController < ApplicationController
   def destroy
     @dividend.destroy
     respond_to do |format|
-      format.html { redirect_to stock_dividends_path(@dividend.stock_id), notice: 'Dividend was successfully destroyed.' }
+      format.html { redirect_to dividends_path, notice: 'Dividend was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
