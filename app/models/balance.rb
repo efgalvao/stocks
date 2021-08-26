@@ -3,6 +3,11 @@ class Balance < ApplicationRecord
 
   before_create :set_date
 
+  scope :past_date, lambda { |date|
+                      where("date >= ? AND date <= ? ",
+                            date.beginning_of_month, date.end_of_month)
+                    }
+
   # Balance of current month
   scope :current, lambda {
                     where(date: DateTime.current.beginning_of_month..DateTime.current

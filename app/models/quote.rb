@@ -9,6 +9,9 @@ class Quote < ApplicationRecord
                                     Time.current.end_of_month)
                             }
 
+  scope :past_date, ->(date) { where("aquisition_date <= ?", date) }
+
+
   def self.average_price
     average('aquisition_value')
   end

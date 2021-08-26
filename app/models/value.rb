@@ -3,6 +3,9 @@ class Value < ApplicationRecord
 
   before_create :set_date
 
+  scope :past_date, ->(date) { where("date <= ?", date) }
+
+
   def self.monthly_value
     group_by_month(:date, last: 12, current: true).average('value')
   end
