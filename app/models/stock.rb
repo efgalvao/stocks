@@ -46,4 +46,14 @@ class Stock < ApplicationRecord
       values.group_by_month(:date, last: 12, current: true).average('value')
     end
   end
+
+  def past_stock_balance(date)
+    value = if values.past_date(date).order('date desc').first.nil?
+              quotes.past_date(date).order('aquisition_date desc').first&.aquisition_value
+            else
+              values.past_date(date).order('date desc').first&.value
+            end
+    quotes_count = quotes.past_date(date).count
+    value * quotes_count
+  end
 end
