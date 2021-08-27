@@ -4,7 +4,7 @@ class Balance < ApplicationRecord
   before_create :set_date
 
   scope :past_date, lambda { |date|
-                      where("date >= ? AND date <= ? ",
+                      where("date BETWEEN ? AND ? ",
                             date.beginning_of_month, date.end_of_month)
                     }
 

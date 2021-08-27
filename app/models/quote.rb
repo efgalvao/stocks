@@ -4,9 +4,9 @@ class Quote < ApplicationRecord
   before_create :set_aquisition_date
 
   scope :bought_this_month, lambda {
-                              where("aquisition_date > ? AND aquisition_date < ?",
-                                    Time.current.beginning_of_month,
-                                    Time.current.end_of_month)
+                              where("aquisition_date BETWEEN ? AND ?",
+                                    DateTime.current.beginning_of_month,
+                                    DateTime.current.end_of_month)
                             }
 
   scope :past_date, ->(date) { where("aquisition_date <= ?", date) }
