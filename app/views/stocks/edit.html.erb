@@ -2,7 +2,9 @@
   Editing stock: <%= @stock.name %>
 </div>
 
-<%= render 'form', stock: @stock %>
+<div class="form">
+  <%= render 'form', stock: @stock %>
 
-<%= link_to 'Details', @stock, class: "btn btn-info" %>
-<%= link_to 'Back', stocks_path, class: "btn btn-primary" %>
+  <%= link_to 'Details', @stock, class: "btn btn-info" %>
+  <%= link_to 'Back', stocks_path, class: "btn btn-primary" %>
+</div>
