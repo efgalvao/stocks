@@ -1,6 +1,8 @@
 <div class="title">
   New Value
 </div>
-<%= render 'form', value: @value %>
 
-<%= link_to 'Back', values_path, :class => "btn btn-primary" %>
+<div class="form">
+  <%= render 'form', value: @value %>
+  <%= link_to 'Back', values_path, :class => "btn btn-primary" %>
+</div>
