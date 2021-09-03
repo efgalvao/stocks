@@ -2,6 +2,7 @@
   New dividend
 </div>
 
-<%= render 'form', dividend: @dividend %>
-
-<%= link_to 'Back', dividends_path, :class => "btn btn-primary" %>
+<div class="form">
+  <%= render 'form', dividend: @dividend %>
+  <%= link_to 'Back', dividends_path, :class => "btn btn-primary" %>
+</div>
