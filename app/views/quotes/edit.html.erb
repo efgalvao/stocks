@@ -2,7 +2,9 @@
   Editing quote
 </div>
 
-<%= render 'form', quote: @quote %>
+<div class="form">
+  <%= render 'form', quote: @quote %>
 
-<%= link_to 'Details', @quote,  class: "btn btn-info" %>
-<%= link_to 'Back', quotes_path,  class: "btn btn-primary" %>
+  <%= link_to 'Details', @quote,  class: "btn btn-info" %>
+  <%= link_to 'Back', quotes_path,  class: "btn btn-primary" %>
+</div>

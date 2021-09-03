@@ -1,6 +1,9 @@
 <div class="title">
   New quote
 </div>
-<%= render 'form', quote: @quote %>
 
-<%= link_to 'Back', quotes_path, :class => "btn btn-primary" %>
+<div class="form">
+  <%= render 'form', quote: @quote %>
+
+  <%= link_to 'Back', quotes_path, :class => "btn btn-primary" %>
+</div>
