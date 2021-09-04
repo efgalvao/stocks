@@ -17,7 +17,6 @@
                 aria-controls="collapse"> &darr;</a>
   </div>
 
-
 <div class="collapse" id="collapse-<%= account.id %>">
   <div class="account">
     <div class="chart-title">
@@ -28,24 +27,11 @@
       <%= line_chart account.monthly_balance, precision: 5 %>
     </div>
 
-    <div class="chart-title">
-      Monthly stocks value:
-    </div>
+    <% if account.savings == false %>
+      <%= render 'stock_chart', account: account %>
+    <% end %>
 
-    <div class="summary-chart">
-      <%= line_chart account.stocks.map { |stock| {
-          name: stock.name, data: stock.values.monthly_value
-          } }, precision: 5 %>
-    </div>
-
-    <% account.stocks.each do |stock| %>
-      <div class="summary-stocks">
-      <%= link_to stock.name, stock_summary_path(stock), class:"summary-stock" %>
-      </div>
-      <% end %>
-
-    </div>
   </div>
-
+</div>
 <% end%>
 
