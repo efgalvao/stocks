@@ -10,8 +10,8 @@ class Balance < ApplicationRecord
 
   # Balance of current month
   scope :current, lambda {
-                    where(date: DateTime.current.beginning_of_month..DateTime.current
-                      .end_of_month).first
+                    where("date BETWEEN ? AND ? ", DateTime.current.beginning_of_month,
+                          DateTime.current.end_of_month).limit(1)
                   }
 
   scope :newest_balance, -> { order('date desc').first }
