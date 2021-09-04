@@ -11,7 +11,7 @@ class Account < ApplicationRecord
     if balances.current.blank?
       balance = balances.create(balance: total)
     else
-      balance = balances.current
+      balance = balances.current.first
       balance.balance = total
     end
     balance.save
