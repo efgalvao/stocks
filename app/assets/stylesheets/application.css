@@ -74,6 +74,12 @@ nav a {
 margin-right: 15px;
 }
 
+.navbar-info {
+  color: white;
+  right: 0;
+  position: absolute;
+}
+
 .title {
   background-color: #333;
   font-size: 5rem;
