@@ -1,5 +1,5 @@
 class Balance < ApplicationRecord
-  belongs_to :account, touch: true
+  belongs_to :balanceable, polymorphic: true, touch: true
 
   before_create :set_date
 

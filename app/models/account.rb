@@ -1,5 +1,5 @@
 class Account < ApplicationRecord
-  has_many :balances, dependent: :destroy
+  has_many :balances, as: :balanceable, dependent: :destroy
   has_many :stocks, dependent: :destroy
 
   scope :savings_accounts, -> { where(savings: true) }
