@@ -58,6 +58,7 @@
 #                         DELETE /charts/:id(.:format)                                            charts#destroy
 
 Rails.application.routes.draw do
+  devise_for :users
   root 'stocks#main'
 
   resources :accounts do
@@ -67,14 +68,14 @@ Rails.application.routes.draw do
   resources :stocks do
     get '/summary', to: 'stocks#summary'
     resources :dividends, only: [:destroy]
-    resources :values, only: %i[edit destroy]
+    resources :prices, only: %i[edit destroy]
   end
 
   resources :quotes
 
   resources :dividends, except: [:destroy]
 
-  resources :values, except: %i[edit destroy]
+  resources :prices, except: %i[edit destroy]
 
   resources :charts, only: %i[index]
 

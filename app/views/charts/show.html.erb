@@ -25,13 +25,13 @@ Average paid price:
 </div>
 
 <div class="stock-item">
-Current value per share:
-<%= number_to_currency(@stock.values.last.value, unit: 'R$', separator: ',', delimiter: '') %>
+Current price per share:
+<%= number_to_currency(@stock.prices.last.price, unit: 'R$', separator: ',', delimiter: '') %>
 </div>
 
 <div class="stock-item">
 Current total value:
-<%= number_to_currency(@stock.values.sum(:value), unit: 'R$', separator: ',', delimiter: '') %>
+<%= number_to_currency(@stock.prces.sum(:price), unit: 'R$', separator: ',', delimiter: '') %>
 </div>
 
 <div class="stock-item">
@@ -41,8 +41,8 @@ Total dividends received:
 </div>
 
 <div class="stock-charts">
-<h3> Value in the last 12 months:</h3>
-<%= line_chart @stock.values.monthly_value %>
+<h3> Price in the last 12 months:</h3>
+<%= line_chart @stock.prices.monthly_price %>
 
 
 <h3> Dividends:</h3>

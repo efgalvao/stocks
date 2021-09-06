@@ -18,7 +18,7 @@ class Quote < ApplicationRecord
 
   def self.month_qty
     group_by_month(:aquisition_date, last: 12, current: true).count.each_with_object({}) do |(date, total), cumulative|
-      cumulative[date] = total + (cumulative.values.last || 0)
+      cumulative[date] = total + (cumulative.prices.last || 0)
     end
   end
 
