@@ -123,3 +123,13 @@ margin-right: 15px;
   left: 35%;
   width: 600px;
 }
+
+.devise-links {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.devise-links a {
+    margin-right: 15px;
+
+}
