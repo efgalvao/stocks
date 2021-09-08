@@ -36,6 +36,7 @@ group :development, :test do
   gem 'rails-erd'
   gem 'rspec-rails', '~> 5.0.0'
   gem 'dotenv-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -61,6 +62,8 @@ group :test do
   gem 'webdrivers'
   # Test coverage
   gem 'simplecov', require: false, group: :test
+  # Faker to generate fake data for tests
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
