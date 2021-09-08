@@ -5,7 +5,7 @@
 
     <p>
       <strong>Account:</strong>
-      <%= @balance.account.name %>
+      <%= @balance.balanceable.name %>
     </p>
 
     <p>
@@ -20,7 +20,7 @@
 
     </p>
 
-    <%= link_to 'Edit', edit_account_balance_path(id: @balance.id, account_id: @balance.account.id), :class => "btn btn-warning" %>
+    <%= link_to 'Edit', edit_account_balance_path(id: @balance.id, account_id: @balance.balanceable.id), :class => "btn btn-warning" %>
     <%= link_to 'Back', balances_path, :class => "btn btn-primary" %>
 
   </div>

@@ -25,8 +25,8 @@
         <td><%= balance.balance %></td>
         <td><%= balance.date.strftime('%d %B - %Y') %></td>
         <td><%= link_to 'Details',  balance_path(balance), class: "btn btn-info" %>
-          <%= link_to 'Edit', edit_account_balance_path(balance, account_id: balance.account_id), class: "btn btn-warning" %>
-          <%= link_to 'Delete', account_balance_path(balance, account_id: balance.account_id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+          <%= link_to 'Edit', edit_account_balance_path(id: balance.id, account_id: balance.balanceable_id), class: "btn btn-warning" %>
+          <%= link_to 'Delete', account_balance_path(id: balance.id, account_id: balance.balanceable_id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

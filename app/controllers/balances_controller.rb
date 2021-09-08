@@ -68,6 +68,6 @@ class BalancesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def balance_params
-    params.require(:balance).permit(:balance, :date, :account_id)
+    params.require(:balance).permit(:balance, :date, :balanceable_id)
   end
 end
