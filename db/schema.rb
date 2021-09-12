@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_09_06_134204) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.boolean "savings"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2021_09_06_134204) do
 
   create_table "dividends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "date"
-    t.float "value"
+    t.float "value", null: false
     t.bigint "stock_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_09_06_134204) do
 
   create_table "prices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "date"
-    t.float "price"
+    t.float "price", null: false
     t.bigint "stock_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2021_09_06_134204) do
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "aquisition_date"
-    t.float "aquisition_value"
+    t.float "aquisition_value", null: false
     t.bigint "stock_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2021_09_06_134204) do
   end
 
   create_table "stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.bigint "account_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
