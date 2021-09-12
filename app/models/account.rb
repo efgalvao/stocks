@@ -6,6 +6,8 @@ class Account < ApplicationRecord
 
   scope :stocks_accounts, -> { where(savings: false) }
 
+  validates :name, presence: true, uniqueness: { case_sensitive: true }
+
   def generate_balance
     total = stocks.inject(0) { |sum, stock| stock.updated_balance + sum }
     if balances.current.blank?
