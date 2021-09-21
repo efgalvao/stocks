@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_09_06_134204) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.index ["name"], name: "index_accounts_on_name", unique: true
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 2021_09_06_134204) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_stocks_on_account_id"
+    t.index ["name"], name: "index_stocks_on_name", unique: true
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
